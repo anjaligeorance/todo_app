@@ -3,35 +3,47 @@ import React, { useState } from "react";
 const Auth = ({ setLoggedInUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSignUp = () => {
-    const users = JSON.parse(localStorage.getItem("users")) || {};
-    if (users[email]) {
-      alert("User already exists. Please sign in.");
-      return;
-    }
-    users[email] = { password };
-    localStorage.setItem("users", JSON.stringify(users));
-    alert("Sign-up successful! Please sign in.");
-  };
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-  const handleSignIn = () => {
-    const users = JSON.parse(localStorage.getItem("users")) || {};
-    if (users[email] && users[email].password === password) {
-      localStorage.setItem("loggedInUser", email);
+    const users = JSON.parse(localStorage.getItem("users")) || {}; 
+
+    
+    if (users[email] && users[email] === password) {
+      localStorage.setItem("loggedInUser", email); 
       setLoggedInUser(email);
     } else {
-      alert("Invalid credentials!");
+      setError("Invalid credentials. Please check your email and password.");
     }
   };
 
   return (
     <div>
-      <h2>Authentication</h2>
-      <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignUp}>Sign Up</button>
-      <button onClick={handleSignIn}>Sign In</button>
+      <h2>Sign In</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Sign In</button>
+      </form>
     </div>
   );
 };
