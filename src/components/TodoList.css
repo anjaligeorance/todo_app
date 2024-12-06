@@ -1,4 +1,3 @@
-
 .todo-container {
     display: flex;
     flex-direction: column;
@@ -8,43 +7,19 @@
     margin: 0 auto;
 }
 
-
 .task-input-container {
     display: flex;
     width: 100%;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
-
-
 
 input[type="text"] {
     width: 80%;
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-
-button {
-    background-color: #6200ee;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;width:auto;
-    width: 15%; 
-    margin-left: 10px;
-}
-
-button:hover {
-    background-color: #3700b3;
-}
-
-button:active {
-    background-color: #23036a;
 }
 
 
@@ -57,25 +32,64 @@ button:active {
 
 .task-list li {
     display: flex;
-    justify-content: space-between; 
     align-items: center;
+    justify-content: space-between;
     background-color: #e3f2fd;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
 }
 
 
-.edit-btn {
-    background-color: #ff9800; 
-    font-size: 14px;width:auto;
+
+button {
+    background-color: #6200ee;
+    color: white;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px; 
+}
+.task-list li div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  .task-list li div input[type="text"] {
+    flex: 2;
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .task-list li div input[type="number"] {
+    width: 50px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .task-list li div button {
+    margin-left: 5px;
+    padding: 5px 10px;
+  }
+  
+button:hover {
+    background-color: #3700b3;
 }
 
+button:active {
+    background-color: #23036a;
+}
+
+.edit-btn {
+    background-color: #ff9800;
+    font-size: 14px;
+}
 
 .edit-btn:hover {
     background-color: #e65100;
@@ -85,16 +99,10 @@ button:active {
     background-color: #d32f2f;
 }
 
-
 .delete-btn {
     background-color: #ff1744;
     font-size: 14px;
-    padding: 5px 10px;width:auto;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
-
 
 .delete-btn:hover {
     background-color: #d50000;
@@ -102,6 +110,19 @@ button:active {
 
 .delete-btn:active {
     background-color: #9b0000;
+}
+
+.save-btn {
+    background-color: #4caf50;
+    font-size: 14px;
+}
+
+.save-btn:hover {
+    background-color: #388e3c;
+}
+
+.save-btn:active {
+    background-color: #1b5e20;
 }
 
 
@@ -120,4 +141,9 @@ button:active {
 
 .logout-btn-container button:hover {
     background-color: #23036a;
+}
+
+.task-input-container input[type="number"] {
+    width: 60px;
+    margin-right: 5px;
 }
